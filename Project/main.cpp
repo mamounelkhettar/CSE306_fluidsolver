@@ -3,7 +3,7 @@
 #include "time.h"
 #include <iomanip>
 
-#include "polygon.cpp"
+#include "polygon.h"
 
 using namespace std ; 
 
