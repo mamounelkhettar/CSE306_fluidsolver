@@ -2,6 +2,7 @@
 #include <iostream>
 #include "time.h"
 #include <iomanip>
+#include "vector"
 
 #include "vector.h"
 
