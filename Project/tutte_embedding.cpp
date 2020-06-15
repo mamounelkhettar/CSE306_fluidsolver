@@ -7,8 +7,6 @@
 
 
 #include "vector.h"
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image_write.h"
 
 
 std::vector<Vector> tutte_embedding(std::vector<int> b, std::vector<Vector> v) {
@@ -28,7 +26,8 @@ std::vector<Vector> tutte_embedding(std::vector<int> b, std::vector<Vector> v) {
 
     for(int t = 0; t < 200; t ++) {
         for(int i = 0; i < 200; i ++) {
-            
+        }
     }
     return v0 ;
 }
+
