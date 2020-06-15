@@ -11,11 +11,17 @@
 class Polygon {  
 public:
     std::vector<Vector> vertices ;
+    std::vector<double> radius ;
 
     Polygon() {} ;
 
+    Polygon(std::vector<Vector> vertices, std::vector<double> radius){
+        this->vertices = vertices ;
+        this->radius = radius ;
+    }
+
     Polygon(std::vector<Vector> vertices){
-        this->vertices = vertices;
+        this->vertices = vertices ;
     }
 };  
 

@@ -2,8 +2,10 @@
 
 Vector intersect(Vector prevVertex, Vector curVertex, Polygon clipPolygon, int i, int j) {
     Vector c1 = clipPolygon.vertices[i] ; 
+    double w1 =  pow(clipPolygon.radius[i], 2) ;
     Vector c2 = clipPolygon.vertices[j] ; 
-    Vector N = (c1 + c2) / 2 ;
+    double w2 =  pow(clipPolygon.radius[j], 2) ;
+    Vector N = ((c1 + c2) / 2) + (((w1 - w2)/(2 * (pow(norm(c1 - c2), 2)))) * (c1 - c2)) ;
     double t = dot((N - prevVertex), (c1 - c2)) / dot((curVertex - prevVertex), (c1 - c2)) ;
     Vector P = prevVertex + t * (curVertex - prevVertex) ;
     return P ;
@@ -11,12 +13,12 @@ Vector intersect(Vector prevVertex, Vector curVertex, Polygon clipPolygon, int i
 
 bool inside(Vector P, Polygon clipPolygon, int i, int j) {
     Vector c1 = clipPolygon.vertices[i] ; 
+    double w1 =  pow(clipPolygon.radius[i], 2) ;
     Vector c2 = clipPolygon.vertices[j] ; 
-    Vector N = (c1 + c2) / 2 ;
-
-    double t = dot((P - N), (c2 - c1)) ;
-    if (t > 0) { return false ; }
-    return true ;
+    double w2 =  pow(clipPolygon.radius[j], 2) ;
+    Vector N = ((c1 + c2) / 2) + (((w1 - w2) / (2 * (pow(norm(c1 - c2), 2)))) * (c1 - c2)) ;
+    //double t = dot((P - N), (c2 - c1)) ;
+    return dot((P - N), (c2 - c1)) < 0 ;
 }
 
 std::vector<Polygon> polygon_clipping(Polygon poly, Polygon q) {
